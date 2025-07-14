@@ -1,0 +1,16 @@
+{% liquid
+    assign badge_text = block.settings.badge_text
+    assign tags = block.settings.tags | split: ','
+    assign tag_available = false
+    for tag in tags
+        if product.tags contains tag
+            assign tag_available = true
+            break
+        endif
+    endfor
+%}
+{% if tag_available and badge_text != blank %}
+    <div class="product__text inline-richtext" {{ block.shopify_attributes }}>
+        <span class="product-custom-badge badge color-{{ block.settings.color_scheme }}">{{ badge_text }}</span>
+    </div>
+{% endif %}
