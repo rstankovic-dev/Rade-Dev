@@ -23,6 +23,14 @@
             "text_style": "uppercase"
           }
         },
+        "custom_badge_cieEtk": {
+          "type": "custom_badge",
+          "settings": {
+            "color_scheme": "scheme-4",
+            "badge_text": "Staff Pick",
+            "tags": "Winter, Sport, Snowboard"
+          }
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -58,6 +66,7 @@
       "block_order": [
         "title",
         "vendor",
+        "custom_badge_cieEtk",
         "price",
         "variant_picker",
         "quantity_selector",
@@ -67,7 +76,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
-        "media_size": "large",
+        "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "thumbnail_slider",
@@ -78,6 +87,70 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
+      }
+    },
+    "custom_faq_eaCNX4": {
+      "type": "custom-faq",
+      "blocks": {
+        "faq_item_TkKVUr": {
+          "type": "faq_item",
+          "settings": {
+            "question": "<strong>What is the shipping policy?</strong>",
+            "answer": "<p>We offer free shipping on all orders over $50. Orders are processed within 2-3 business days, and delivery typically takes 5-7 business days.</p>"
+          }
+        },
+        "faq_item_QxHL4w": {
+          "type": "faq_item",
+          "settings": {
+            "question": "<strong>Can I track my order?</strong>",
+            "answer": "<p>Yes, once your order has shipped, you will receive a tracking number via email to track your package.</p>"
+          }
+        },
+        "faq_item_UWYwfc": {
+          "type": "faq_item",
+          "settings": {
+            "question": "<strong>How do I return an item?</strong>",
+            "answer": "<p>We accept returns within 30 days of delivery. To initiate a return, please visit our returns page and fill out the form with your order details.</p>"
+          }
+        },
+        "faq_item_7aWG7D": {
+          "type": "faq_item",
+          "settings": {
+            "question": "<strong>What payment methods do you accept?</strong>",
+            "answer": "<p>We accept all major credit cards, PayPal, and Apple Pay.</p>"
+          }
+        },
+        "faq_item_qYnnrK": {
+          "type": "faq_item",
+          "settings": {
+            "question": "<strong>Do you ship internationally?</strong>",
+            "answer": "<p>Yes, we offer international shipping to many countries. Shipping fees and delivery times may vary depending on the destination.</p>"
+          }
+        },
+        "faq_item_Atyw7Y": {
+          "type": "faq_item",
+          "settings": {
+            "question": "<strong>How can I contact customer support?</strong>",
+            "answer": "<p>You can reach our customer support team via email at <a href=\"#\" title=\"#\">support@yourstore.com</a> or through the contact form on our website.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_TkKVUr",
+        "faq_item_QxHL4w",
+        "faq_item_UWYwfc",
+        "faq_item_7aWG7D",
+        "faq_item_qYnnrK",
+        "faq_item_Atyw7Y"
+      ],
+      "name": "Custom FAQ",
+      "settings": {
+        "color_scheme": "",
+        "heading": "FAQ",
+        "heading_size": "h1",
+        "open_first_item": true,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "related-products": {
@@ -101,6 +174,7 @@
   },
   "order": [
     "main",
+    "custom_faq_eaCNX4",
     "related-products"
   ]
 }
