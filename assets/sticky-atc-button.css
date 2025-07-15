@@ -1,0 +1,48 @@
+sticky-atc-button {
+    display: none;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    border-top: 0.1rem solid rgba(var(--color-foreground),.08);
+    animation: var(--animation-slide-in);
+    animation-delay: calc(var(--animation-order) * 75ms);
+    transform: translateY(2rem);
+    opacity: 0.1;
+}
+
+sticky-atc-button.active {
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.sticky-atc-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.sticky-atc-form {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 36rem;
+    margin-left: auto;
+}
+
+.sticky-atc-form > * {
+    width: calc(50% - 0.5rem);
+}
+
+.sticky-atc-form .svg-wrapper {
+    right: 1rem;
+}
+
+.sticky-atc-header .product__title {
+    margin: 0;
+    font-weight: 700;
+}

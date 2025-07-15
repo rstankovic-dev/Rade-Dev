@@ -1,0 +1,78 @@
+<sticky-atc-button class="quick-add-hidden color-{{ color_scheme }} gradient">
+    <div class="page-width">
+        <div class="sticky-atc-button-container">
+            <div class="sticky-atc-header small-hide">
+                <h2 class="product__title h4">{{ product.title }} | <span class="sticky-atc-price">{{ product.selected_or_first_available_variant.price | money }}</span></h2>
+            </div>
+            {%- form 'product',
+                product,
+                id: 'sticky-atc-form',
+                class: 'form sticky-atc-form',
+                novalidate: 'novalidate',
+                data-type: 'add-to-cart-form'
+            -%}
+                {%- liquid
+                assign check_against_inventory = true
+                if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
+                    assign check_against_inventory = false
+                endif
+                if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
+                    assign quantity_rule_soldout = true
+                endif
+                -%}
+                {% if product.has_only_default_variant %}
+                <input
+                    type="hidden"
+                    name="id"
+                    value="{{ product.selected_or_first_available_variant.id }}"
+                    class="sticky-atc-id-selector"
+                    {% if product.selected_or_first_available_variant.available == false
+                    or quantity_rule_soldout
+                    or product.selected_or_first_available_variant == null
+                    %}
+                    disabled
+                    {% endif %}
+                >
+                {% else %}
+                    <div class="select">
+                        <select
+                            class="select__select sticky-atc-id-selector"
+                            name="id"
+                            value="{{ product.selected_or_first_available_variant.id }}"
+                        >
+                            {% for variant in product.variants %}
+                                <option data-price="{{ variant.price | money }}" value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %} {% if variant.id == product.selected_or_first_available_variant.id %}selected{% endif %}>{{ variant.title }}</option>
+                            {% endfor %}
+                        </select>
+                        <span class="svg-wrapper">
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </span>
+                    </div>
+                {% endif %}
+
+                <button
+                    type="submit"
+                    name="add"
+                    class="sticky-atc-form__submit button button--primary button--full-width"
+                    {% if product.selected_or_first_available_variant.available == false
+                    or quantity_rule_soldout
+                    or product.selected_or_first_available_variant == null
+                    %}
+                    disabled
+                    {% endif %}
+                >
+                    <span>
+                    {%- if product.selected_or_first_available_variant == null -%}
+                        {{ 'products.product.unavailable' | t }}
+                    {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+                        {{ 'products.product.sold_out' | t }}
+                    {%- else -%}
+                        {{ 'products.product.add_to_cart' | t }}
+                    {%- endif -%}
+                    </span>
+                    {%- render 'loading-spinner' -%}
+                </button>
+            {%- endform -%}
+        </div>
+    </div>
+</sticky-atc-button>

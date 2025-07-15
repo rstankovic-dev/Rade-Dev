@@ -726,6 +726,12 @@
   </div>
 </product-info>
 
+{% if section.settings.enable_sticky_atc %}
+  {% render 'sticky-atc-button', product: product, color_scheme: section.settings.color_scheme %}
+  {{ 'sticky-atc-button.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'sticky-atc-button.js' | asset_url }}" defer></script>
+{% endif %}
+
 {% schema %}
 {
   "name": "t:sections.main-product.name",
@@ -2107,6 +2113,12 @@
       "id": "enable_sticky_info",
       "default": true,
       "label": "t:sections.main-product.settings.enable_sticky_info.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_atc",
+      "label": "Sticky ATC Button",
+      "default": true
     },
     {
       "type": "color_scheme",
