@@ -20,7 +20,13 @@
           "type": "text",
           "settings": {
             "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
+            "text_style": "body"
+          }
+        },
+        "type_D84GxD": {
+          "type": "type",
+          "settings": {
+            "text_style": "body"
           }
         },
         "custom_badge_cieEtk": {
@@ -66,6 +72,7 @@
       "block_order": [
         "title",
         "vendor",
+        "type_D84GxD",
         "custom_badge_cieEtk",
         "price",
         "variant_picker",
@@ -75,6 +82,7 @@
       ],
       "settings": {
         "enable_sticky_info": true,
+        "enable_sticky_atc": true,
         "color_scheme": "scheme-1",
         "media_size": "medium",
         "constrain_to_viewport": true,
